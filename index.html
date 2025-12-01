@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy Birthday ❤️</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+  <!-- SCREEN 1 -->
+  <section id="screen1" class="screen active">
+    <div class="card">
+      <h1 class="title">Happy Birthday, My Love! 🎉🎂</h1>
+      <button class="btn" onclick="goToScreen(2)">Let's Go! ✨</button>
+    </div>
+  </section>
+
+  <!-- SCREEN 2: SINGLE-IMAGE SLIDER -->
+  <section id="screen2" class="screen">
+    <h2 class="subtitle">Our Precious Memories ❤️</h2>
+
+    <div class="carousel-container" id="carouselContainer">
+      <button class="arrow left" id="prevBtn" aria-label="Previous">❮</button>
+
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="slide">
+            <img src="index.img1.png" alt="memory 1" width="400" height="400">
+            <div class="hoverMsg">This day was unforgettable 💖</div>
+          </div>
+          <div class="slide">
+            <img src="index.img2.png" alt="memory 2" width="400" height="400">
+            <div class="hoverMsg">You make my world brighter ✨</div>
+          </div>
+          <div class="slide">
+            <img src="index.img3.png" alt="memory 3" width="400" height="400">
+            <div class="hoverMsg">I’m so grateful for you 💕</div>
+          </div>
+          <div class="slide">
+            <img src="index.img4.png" alt="memory 4" width="400" height="400">
+            <div class="hoverMsg">Our happiest moment 😍</div>
+          </div>
+          <div class="slide">
+            <img src="index.img5.png" alt="memory 5" width="400" height="400">
+            <div class="hoverMsg">You are my comfort person ❤️</div>
+          </div>
+          <div class="slide">
+            <img src="index.img6.png" alt="memory 6" width="400" height="400">
+            <div class="hoverMsg">Every moment with you is magic ✨</div>
+          </div>
+        </div>
+      </div>
+
+      <button class="arrow right" id="nextBtn" aria-label="Next">❯</button>
+    </div>
+
+    <div style="margin-top:18px;">
+      <button class="btn next" onclick="goToScreen(3)">Next Surprise 🎁</button>
+    </div>
+  </section>
+
+  <!-- SCREEN 3: CAKE + TYPEWRITER + FLOATING -->
+  <section id="screen3" class="screen">
+    <div id="floating" aria-hidden="true"></div> <!-- behind -->
+    <h2 class="subtitle">Click the Cake 🎂</h2>
+
+    <img id="cake" src="birthday-cake.png" alt="cake" class="cake" onclick="showWish()">
+
+    <div id="wishBox" class="hidden msgBox">
+      <p id="typeMessage"></p>
+    </div>
+  </section>
+
+  <script src="index.js"></script>
+</body>
+</html>

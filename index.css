@@ -1,0 +1,159 @@
+/* ====== Base ====== */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(160deg,#ffcee6 0%, #fff0f6 100%);
+  color: #222;
+  -webkit-font-smoothing:antialiased;
+}
+
+.screen { display: none; text-align:center; padding:36px 16px; min-height:100vh; position:relative; }
+.screen.active { display:block; }
+
+/* Card */
+.card, .msgBox {
+  width: 78%;
+  max-width:720px;
+  margin: 28px auto;
+  background: #fff;
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(18,18,18,0.08);
+}
+
+/* Titles & Buttons */
+.title { font-size: 32px; margin: 8px 0; letter-spacing:0.2px; }
+.subtitle { font-size: 24px; margin: 8px 0 20px; }
+
+.btn {
+  background: linear-gradient(90deg,#ff6aa6,#ff3a7a);
+  color: #fff; border: none; padding:12px 22px; border-radius:999px; font-size:16px;
+  cursor:pointer; box-shadow: 0 6px 18px rgba(255,90,140,0.15);
+}
+.btn:hover { transform: translateY(-3px); transition: transform .18s ease; }
+
+/* ====== CAROUSEL ====== */
+.carousel-container {
+  width: 420px; /* viewport + arrows space */
+  margin: 0 auto;
+  position: relative;
+}
+
+.carousel-viewport {
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 12px;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  width: max-content;
+  transform: translateX(0);
+  transition: transform .45s cubic-bezier(.22,.9,.31,1);
+  will-change: transform;
+}
+
+/* single slide */
+.slide {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  flex: 0 0 400px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.slide img {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  display:block;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+/* hover message overlay */
+.hoverMsg {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 12px 14px;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  font-size: 16px;
+  border-radius: 0 0 12px 12px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all .22s ease;
+}
+.slide:hover .hoverMsg { opacity:1; transform: translateY(0); }
+
+/* arrows */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width:44px; height:44px;
+  border-radius:50%;
+  border:0;
+  background: #ffffffcc;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+  cursor:pointer; font-size:20px;
+  display:flex; align-items:center; justify-content:center;
+}
+.arrow.left { left: -54px; }
+.arrow.right { right: -54px; }
+
+/* ====== CAKE & WISH ====== */
+.cake {
+  width: 200px;
+  cursor: pointer;
+  transition: transform .18s ease;
+  z-index: 5;
+  position: relative;
+}
+.cake:hover { transform: scale(1.08); }
+
+/* hidden rule */
+.hidden { display:none; }
+
+/* typewriter message styling */
+#typeMessage { font-size: 20px; line-height:28px; text-align:left; white-space:pre-wrap; }
+
+/* floating area: behind content and non-blocking clicks */
+#floating {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none; /* crucial so cake is clickable */
+  overflow: hidden;
+}
+
+/* floating particles */
+.floatItem {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform, opacity;
+  animation: floatUp linear forwards;
+}
+
+/* animation */
+@keyframes floatUp {
+  0% { transform: translateY(30px) scale(1); opacity:1; }
+  100% { transform: translateY(-700px) scale(1.1); opacity:0; }
+}
+
+/* responsive tweak */
+@media (max-width:480px){
+  .carousel-container { width: 92%; }
+  .carousel-viewport, .slide, .slide img { width: 320px; height:320px; flex: 0 0 320px; }
+  .arrow.left{ left: -40px; } .arrow.right{ right: -40px; }
+}
